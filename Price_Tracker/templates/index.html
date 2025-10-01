@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jayden"> 
+    <meta name="description" content="Runescape item price"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <title>Price tracker OSRS</title>
+</head>
+
+<body>
+    <div class = "container">
+        <h1> OSRS Exchange</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>High Price</th>
+                    <th>Low Price</th>
+                    <th>Last Updated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item['item_name'] }}</td>
+                    <td>{{ "{:,}".format(item['high_price']) }} gp</td>
+                    <td>{{ "{:,}".format(item['low_price']) }} gp</td>
+                    <td>{{ item['formatted_time'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div   class="footer">
+            <p>&copy; 2025 Jayden</p>
+    </div>
+    </div>
+</body>
+</html>
